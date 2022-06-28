@@ -7,6 +7,7 @@ import '../styles/content.scss';
 import { Header } from "./Header";
 
 interface MovieProps {
+    Genre_id: number,
     Title: string;
     Poster: string;
     Ratings: Array<{
@@ -46,11 +47,17 @@ export function Content({ IdGenre }: ContentProps) {
         <div className="container">
 
             <Header title={selectedGenre.title} />
-            
+
             <main>
                 <div className="movies-list">
                     {movies.map(movie => (
-                        <MovieCard title={movie.Title} poster={movie.Poster} runtime={movie.Runtime} rating={movie.Ratings[0].Value} />
+                        <MovieCard
+                            key={movie.Title}
+                            title={movie.Title}
+                            poster={movie.Poster} 
+                            runtime={movie.Runtime} 
+                            rating={movie.Ratings[0].Value} 
+                            />
                     ))}
                 </div>
             </main>
